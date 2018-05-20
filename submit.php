@@ -20,9 +20,9 @@ $deli=<<<DELIMITER
                     </div>
                 </div>
                 <div class="backside">
-                    <div class="card">
-                        <div class="card-body text-center mt-4">
-                            <h4 class="card-title">{title}</h4>
+                    <div class="card" style="height="120px;">
+                        <div class="card-body text-center mt-4" style="padding:0 125px;">
+                            <h4 class="card-title">{$title}</h4>
                             <p class="card-text">{$cdate}</p>     
                         </div>
                         </div>
@@ -43,11 +43,35 @@ DELIMITER;
     $result = mysqli_query($con,$sql2);
 
 	if (mysqli_query($con, $sql)) {
+		echo $deli;
     	while($row = mysqli_fetch_array($result)) {
-		    echo $deli;
+			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+	        echo '<div class="image-flip" ontouchstart="this.classList.toggle("hover");">';
+	        echo '<div class="mainflip">';
+	        echo '<div class="frontside">';
+	        echo '<div class="card">';
+	        echo '<div class="card-body text-center">';
+	        echo '<p><img class=" img-fluid" src="images/'.$row['image'].'" alt="card image"></p>';
+	        echo '<h4 class="card-title">'.$row['title'].'</h4>';
+	        echo '<p class="card-text">'.$row['description'].'</p>';
+	        echo '<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>';
+	        echo '</div>';
+	        echo '</div>';
+	        echo '</div>';
+	        echo '<div class="backside">';
+	        echo '<div class="card" style="height="120px;">';
+	        echo '<div class="card-body text-center mt-4" style="padding:0 125px;">';
+	        echo '<h4 class="card-title">'.$row['title'].'</h4>';
+	        echo '<p class="card-text">'.$row['capturedate'].'</p>';     
+	        echo '</div>';
+	        echo '</div>';
+	        echo '</div>';
+	        echo '</div>';
+	        echo '</div>';
+	        echo '</div>';
 		}
 	} else {
-    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    	echo "Error: " . $sql . "<br>" . mysqli_error($con);
 	}
 
 	mysqli_close($con);
