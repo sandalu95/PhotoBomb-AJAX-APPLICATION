@@ -130,3 +130,7 @@ section .section-title {
     height: 150px;
     border-radius: 50%;
 }
+
+a:hover {
+   cursor: pointer;
+}
