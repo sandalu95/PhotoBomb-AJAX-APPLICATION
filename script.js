@@ -9,7 +9,7 @@ $(document).ready(function(){
 	$('#formsubmit').click(function(){
 		
 		$.post("submit.php",
-			{title:$('#titlefield').val(),descrip:$('#descfield').val(),cdate:$('#datefield').val(),img:showname()},
+			{pname:$('#titlefield').val(),profile:$('#descfield').val(),admissiondate:$('#datefield').val(),img:showname()},
 			function(data){
 				$('#response').html(data);
 			}

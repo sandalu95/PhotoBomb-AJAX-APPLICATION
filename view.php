@@ -5,8 +5,8 @@
 	}
 	
 	if (isset($_POST['search'])) {
- 		$title = $_POST['search'];
-   		$Query = "SELECT * FROM images WHERE title LIKE '$title%' LIMIT 5";
+ 		$pname = $_POST['search'];
+   		$Query = "SELECT * FROM images WHERE pname LIKE '$pname%' LIMIT 5";
    		$ExecQuery = mysqli_query($con, $Query);
  
    		while ($Result = mysqli_fetch_array($ExecQuery)) {
@@ -19,8 +19,8 @@ $deli=<<<DELIMITER
 			        <div class="card">
 			            <div class="card-body text-center">
 			                <p><img class=" img-fluid" src="images/{$Result['image']}" alt="card image"></p>
-			                <h4 class="card-title">{$Result['title']}</h4>
-			                <p class="card-text">{$Result['description']}</p>
+			                <h4 class="card-title">{$Result['pname']}</h4>
+			                <p class="card-text">{$Result['profile']}</p>
 			                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
 			            </div>
 			        </div>
@@ -28,8 +28,8 @@ $deli=<<<DELIMITER
 			    <div class="backside">
 			        <div class="card" style="height="120px;">
 			            <div class="card-body text-center mt-4" style="padding:0 125px;">
-			                <h4 class="card-title">{$Result['title']}</h4>
-			                <p class="card-text">{$Result['capturedate']}</p>     
+			                <h4 class="card-title">{$Result['pname']}</h4>
+			                <p class="card-text">{$Result['admissiondate']}</p>     
 			            </div>
 			            </div>
 			        </div>
