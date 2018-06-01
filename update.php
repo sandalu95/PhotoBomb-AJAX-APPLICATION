@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Update</title>
+	<!-- stylesheets -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- script files -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/showstu.js"></script>
 </head>
+
 <body style="background-image: url(images/cover.png); background-repeat: no-repeat; background-size: cover;">
 	<div class="container">
 		<div class="jumbotron" style="margin-top:30px;">
@@ -30,51 +35,5 @@
 		<div id="btndisplay" style='padding-left:130px;'></div>
 	</div>
 </body>
-<script>
-	function showstudent(str){
 
-		if (str == "") {
-        	document.getElementById("display").innerHTML = "";
-
-        return;
-    	} else { 
-
-    		document.getElementById("btndisplay").innerHTML = "<button class='btn btn-lg' style='border:1.5px solid black; ' id='deletebtn'>Delete</button>";  
-
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("display").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","getstu.php?q="+str,true);
-        xmlhttp.send();
-        	$(document).ready(function(){
-				$('#deletebtn').click(function(event){
-					alert('moon');
-					event.preventDefault();
-					var pname = $('#inputState').val();
-					alert(pname);
-						$.ajax({
-							url:"delete.php",
-							type:"post",
-							data:{
-								search:pname
-							},
-							success: function(html) {
-					            $("#display").html(html).show();
-					        }
-						});
-				});
-			});
-    }
-
-	}
-
-</script>
 </html>
